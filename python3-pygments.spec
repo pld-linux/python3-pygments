@@ -28,8 +28,7 @@ BuildRequires:	rpmbuild(macros) >= 1.714
 %{?with_doc:BuildRequires:	sphinx-pdg}
 Requires:	python3-modules >= 1:3.5
 Requires:	python3-setuptools
-Provides:	python-Pygments = %{version}-%{release}
-Obsoletes:	python-Pygments
+Conflicts:	python-pygments < 2.5.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
