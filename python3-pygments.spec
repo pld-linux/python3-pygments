@@ -7,13 +7,13 @@
 Summary:	A generic syntax highlighter as Python 3 module
 Summary(pl.UTF-8):	Moduł Pythona 3 do ogólnego podświetlania składni
 Name:		python3-%{module}
-Version:	2.8.1
+Version:	2.9.0
 Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/pygments/
 Source0:	https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
-# Source0-md5:	54b958b3eb6a59e778396eccc7158fff
+# Source0-md5:	665516d1d1c0099241ab6e4c057e26be
 Patch0:		rpmspec.patch
 URL:		http://pygments.org/
 BuildRequires:	python3 >= 1:3.5
