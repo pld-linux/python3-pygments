@@ -1,12 +1,12 @@
---- Pygments-2.0.2/pygments/lexers/installers.py~	2014-11-10 21:17:51.000000000 +0200
-+++ Pygments-2.0.2/pygments/lexers/installers.py	2015-06-15 14:57:19.665609691 +0300
-@@ -201,7 +201,8 @@
+--- Pygments-2.13.0/pygments/lexers/installers.py.orig	2022-09-01 19:07:12.905773545 +0200
++++ Pygments-2.13.0/pygments/lexers/installers.py	2022-09-01 19:11:33.161030288 +0200
+@@ -203,7 +203,8 @@ class RPMSpecLexer(RegexLexer):
              (r'.', Text),
          ],
          'macro': [
--            (r'%define.*\n', Comment.Preproc),
-+            (r'%(?:un)?define.*\n', Comment.Preproc),
-+            (r'%include.*\n', Comment.Preproc),
+-            (r'%define.*$', Comment.Preproc),
++            (r'%(?:un)?define.*$', Comment.Preproc),
++            (r'%include.*$', Comment.Preproc),
              (r'%\{\!\?.*%define.*\}', Comment.Preproc),
              (r'(%(?:if(?:n?arch)?|else(?:if)?|endif))(.*)$',
               bygroups(Comment.Preproc, Text)),
