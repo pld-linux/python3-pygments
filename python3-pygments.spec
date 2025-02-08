@@ -7,25 +7,27 @@
 Summary:	A generic syntax highlighter as Python 3 module
 Summary(pl.UTF-8):	Moduł Pythona 3 do ogólnego podświetlania składni
 Name:		python3-%{module}
-Version:	2.14.0
+Version:	2.19.1
 Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/pygments/
-Source0:	https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
-# Source0-md5:	447be4afb076c8325a7dc659aff5b931
+Source0:	https://pypi.debian.net/pygments/pygments-%{version}.tar.gz
+# Source0-md5:	5e6e00a0f63b9f3b63edfa260f71b1b5
 Patch0:		rpmspec.patch
 URL:		https://pygments.org/
 BuildRequires:	python3 >= 1:3.6
 BuildRequires:	python3-devel >= 1:3.6
 BuildRequires:	python3-modules >= 1:3.6
-BuildRequires:	python3-setuptools
+BuildRequires:	python3-build
+BuildRequires:	python3-installer
+BuildRequires:	python3-hatchling
 %if %{with tests}
 BuildRequires:	python3-pytest >= 7
 BuildRequires:	python3-wcag_contrast_ratio
 %endif
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.714
+BuildRequires:	rpmbuild(macros) >= 2.044
 %{?with_doc:BuildRequires:	sphinx-pdg}
 Requires:	python3-modules >= 1:3.6
 Requires:	python3-setuptools
@@ -75,11 +77,11 @@ API documentation for Python Pygments module.
 Dokumentacja API modułu Pythona Pygments.
 
 %prep
-%setup -q -n Pygments-%{version}
-%patch0 -p1
+%setup -q -n pygments-%{version}
+%patch -P0 -p1
 
 %build
-%py3_build
+%py3_build_pyproject
 
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
@@ -94,7 +96,7 @@ PYTHONPATH=$(pwd) \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%py3_install
+%py3_install_pyproject
 
 %{__mv} $RPM_BUILD_ROOT%{_bindir}/pygmentize{,-3}
 
@@ -109,7 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/pygmentize
 %attr(755,root,root) %{_bindir}/pygmentize-3
 %{py3_sitescriptdir}/pygments
-%{py3_sitescriptdir}/Pygments-%{version}-py*.egg-info
+%{py3_sitescriptdir}/pygments-%{version}.dist-info
 
 %if %{with doc}
 %files apidocs
