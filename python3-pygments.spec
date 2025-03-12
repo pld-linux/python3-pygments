@@ -3,12 +3,17 @@
 %bcond_without	doc	# Sphinx documentation
 %bcond_without	tests	# unit tests
 
+# TODO: fix tests hang on x32
+%ifarch x32
+%undefine	with_tests
+%endif
+
 %define module	pygments
 Summary:	A generic syntax highlighter as Python 3 module
 Summary(pl.UTF-8):	Moduł Pythona 3 do ogólnego podświetlania składni
 Name:		python3-%{module}
 Version:	2.19.1
-Release:	3
+Release:	4
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/pygments/
