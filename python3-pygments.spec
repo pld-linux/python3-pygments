@@ -21,21 +21,20 @@ Source0:	https://pypi.debian.net/pygments/pygments-%{version}.tar.gz
 # Source0-md5:	5e6e00a0f63b9f3b63edfa260f71b1b5
 Patch0:		rpmspec.patch
 URL:		https://pygments.org/
-BuildRequires:	python3 >= 1:3.6
-BuildRequires:	python3-devel >= 1:3.6
-BuildRequires:	python3-modules >= 1:3.6
+BuildRequires:	python3 >= 1:3.8
+BuildRequires:	python3-devel >= 1:3.8
+BuildRequires:	python3-modules >= 1:3.8
 BuildRequires:	python3-build
 BuildRequires:	python3-installer
 BuildRequires:	python3-hatchling
 %if %{with tests}
-BuildRequires:	python3-pytest >= 7
+BuildRequires:	python3-pytest >= 8.2
 BuildRequires:	python3-wcag_contrast_ratio
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 2.044
 %{?with_doc:BuildRequires:	sphinx-pdg}
-Requires:	python3-modules >= 1:3.6
-Requires:	python3-setuptools
+Requires:	python3-modules >= 1:3.8
 Conflicts:	python-pygments < 2.5.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
