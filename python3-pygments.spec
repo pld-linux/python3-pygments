@@ -12,13 +12,13 @@
 Summary:	A generic syntax highlighter as Python 3 module
 Summary(pl.UTF-8):	Moduł Pythona 3 do ogólnego podświetlania składni
 Name:		python3-%{module}
-Version:	2.19.1
-Release:	4
+Version:	2.19.2
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/pygments/
 Source0:	https://pypi.debian.net/pygments/pygments-%{version}.tar.gz
-# Source0-md5:	5e6e00a0f63b9f3b63edfa260f71b1b5
+# Source0-md5:	79260d1c566a507953a81d24b1c51c72
 Patch0:		rpmspec.patch
 URL:		https://pygments.org/
 BuildRequires:	python3 >= 1:3.8
@@ -89,6 +89,7 @@ Dokumentacja API modułu Pythona Pygments.
 
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTHONPATH=$(pwd) \
 %{__python3} -m pytest tests
 %endif
 
@@ -112,8 +113,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS CHANGES LICENSE README.rst
-%attr(755,root,root) %{_bindir}/pygmentize
 %attr(755,root,root) %{_bindir}/pygmentize-3
+%{_bindir}/pygmentize
 %{py3_sitescriptdir}/pygments
 %{py3_sitescriptdir}/pygments-%{version}.dist-info
 
